@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+	<meta content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width" name="viewport"/>
+    <meta name="MobileOptimized" content="320" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait" />
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait" />
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="pageContain">
+		
+		<div class="page page1 current">
+			<div class="contain">
+				<img src="images/1.jpg">
+			</div>
+		</div>
+
+		<div class="page page2">
+			<div class="contain">
+				<img src="images/2.jpg">
+			</div>
+		</div>
+
+		<div class="page page3">
+			<div class="contain">
+				<img src="images/3.jpg">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="fullPage.min.js"></script>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript">
+	var runPage = new FullPage({
+	    id : 'pageContain',                            
+	    slideTime : 800,
+	  	continuous : true,
+	    effect : {
+	        transform : {
+	            translate : 'Y',
+	            scale : [.1, 1],
+	            rotate : [0, 0]
+	        },
+	        opacity : [0, 1]
+	        // zIndex : [-1,1]
+	    },
+	    mode : 'wheel,touch',
+	    easing : 'ease'
+	});
+	</script>
+</body>
+</html>
