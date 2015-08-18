@@ -10,6 +10,7 @@ var minifyCss    = require("gulp-minify-css");
 var connect      = require("gulp-connect");
 var plumber      = require("gulp-plumber");
 var csscomb      = require("gulp-csscomb");
+var pngquant     = require("imagemin-pngquant");
 
 
 var js  = "js/";
@@ -35,9 +36,9 @@ gulp.task('imagemin', function() {
 
                 use: [pngquant({
                 	//图片压缩质量
-                	// quality: '65-80',
-                	//图片压缩速度，默认为3 ，10最高，会有5%失真
-                	// speed: 4
+                	quality: '65-80',
+                	// 图片压缩速度，默认为3 ，10最高，会有5%失真
+                	speed: 4
                 })]
                 
             })

@@ -10,7 +10,7 @@ var minifyCss    = require("gulp-minify-css");
 var connect      = require("gulp-connect");
 var plumber      = require("gulp-plumber");
 var csscomb      = require("gulp-csscomb");
-
+var pngquant     = require("imagemin-pngquant");
 
 var js  = "js/";
 var img = "images/";
