@@ -7,15 +7,22 @@
 	<script src="js/sea.js"></script>
 </head>
 <body>
-	<div id="body">
-		<div class="a1">
-			呵呵as哒
-		</div>
-		<div class="a2">
-			萌萌哒
-		</div>
-		<div class="tplWrap"></div>
+	<!-- duplexHooks拦截器示例 -->
+	<div ms-controller="duplexHooks">
+		<input type="text" ms-duplex-limite="aaa" data-duplex-limite="8">
 	</div>
+
+	<!-- ms-css 样式控制 -->
+	<!-- 不能加入css hack 和important -->
+	<div ms-controller="cssCtrl">
+		<!-- 单投事件 -->
+		<button ms-click="addWidth(100)" ms-mouseenter="addHeight(90)">移入黑色块添加90高 点击添加100宽</button>
+		<!-- 多投事件 -->
+		<button ms-click-1="alert(1)" ms-click-2="addWidth(100)">黑色块添加100宽度</button>
+		<button ms-dblclick="reset()">双击重置颜色块 W:55 H：100</button>
+		<div ms-css-width="width" ms-css-background-color="backgroundColor" ms-css-height="height"></div>
+	</div>
+
 	<script>
 		seajs.config({
 			base:"./js/",
@@ -25,6 +32,7 @@
 			}
 		})
 		seajs.use("main.js");
+
 	</script>
 </body>
 </html>
