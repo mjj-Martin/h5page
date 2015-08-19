@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/sea.js"></script>
+</head>
+<body>
+	<div id="body">
+		<div class="a1">
+			呵呵as哒
+		</div>
+		<div class="a2">
+			萌萌哒
+		</div>
+		<div class="tplWrap"></div>
+	</div>
+	<script>
+		seajs.config({
+			base:"./js/",
+			alias:{
+				"jquery":"jquery-1.9.1.min.js",
+				"avalon":"avalon.shim.js"
+			}
+		})
+		seajs.use("main.js");
+	</script>
+</body>
+</html>
