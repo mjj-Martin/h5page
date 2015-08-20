@@ -78,36 +78,47 @@ gulp.task('css', function() {
     	.pipe(livereload());
 });
 
-//建立服务器
-gulp.task('webserver', function() {
-    connect.server({
-        livereload:true
+// //建立服务器
+// gulp.task('webserver', function() {
+//     connect.server({
+//         livereload:true,
 
-        // 设置服务器根目录
-        //root: "./../../",
+//         // 设置服务器根目录
+//         //root: "./../../",
 
-        // 是否开启https,默认false
-        // https : true,
+//         // 是否开启https,默认false
+//         // https : true,
         
-        // 修改端口 
-        port : 8081,
+//         // 修改端口 
+//         port : 8081
          
-        // 修改host
-        // host : "www.aipai.com"
+//         // 修改host
+//         // host : "www.aipai.com"
          
-        // 代理模式 proxies
-        // {source: '/abc', target: 'http://localhost:8080/abc', options: {headers: {'ABC_HEADER': 'abc'}}}
-        // proxies ：ARRAY
+//         // 代理模式 proxies
+//         // {source: '/abc', target: 'http://localhost:8080/abc', options: {headers: {'ABC_HEADER': 'abc'}}}
+//         // proxies ：ARRAY
 
-    });
-});
+//     });
+// });
 
-gulp.task('watch',["webserver"], function() {
+// gulp.task('watch', function() {
+//     console.log(1)
+//     // 创建监听任务
+//     livereload.listen();
+//   	gulp.watch(css+'/*.less', ['css']);
+//   	// 监听js和html文件变化
+//   	gulp.watch(["./*.html",js+"**/*.js"], function (file) {
+//         livereload.changed(file.path);
+//     });
+// });
+
+gulp.task('watch',['webserver'], function() {
     // 创建监听任务
     livereload.listen();
-  	gulp.watch(img+'/*.less', ['css']);
-  	// 监听js和html文件变化
-  	gulp.watch([app+"**/*.html",js+"**/*.js"], function (file) {
+    gulp.watch(css+'/*.less', ['css']);
+     // 监听js和html文件变化
+    gulp.watch(["./*.html",js+"**/*.js"], function (file) {
         livereload.changed(file.path);
     });
 });
