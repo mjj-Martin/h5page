@@ -82,7 +82,7 @@ gulp.task('css', function() {
 //建立服务器
 gulp.task('webserver', function() {
     connect.server({
-        livereload:true
+        livereload:true,
 
         // 设置服务器根目录
         //root: "./../../",
@@ -91,7 +91,7 @@ gulp.task('webserver', function() {
         // https : true,
         
         // 修改端口 
-        port : 8081,
+        port : 8881,
          
         // 修改host
         // host : "www.aipai.com"
@@ -101,6 +101,8 @@ gulp.task('webserver', function() {
         // proxies ：ARRAY
 
     });
+    var c = require('child_process');
+    c.exec("start http://127.0.0.1:8881");
 });
 
 gulp.task('watch',["webserver"], function() {
@@ -108,7 +110,7 @@ gulp.task('watch',["webserver"], function() {
     livereload.listen();
   	gulp.watch(img+'/*.less', ['css']);
   	// 监听js和html文件变化
-  	gulp.watch([app+"**/*.html",js+"**/*.js"], function (file) {
+  	gulp.watch(["./*.html",js+"**/*.js"], function (file) {
         livereload.changed(file.path);
     });
 });
