@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动加载</title>
+	<meta content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width" name="viewport"/>
+    <meta name="MobileOptimized" content="320" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait" />
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait" />
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<ul class="ul">
+			<li>demo1</li>
+			<li>demo2</li>
+			<li>demo3</li>
+			<li>demo4</li>
+		</ul>
+	</div>
+	<script src="http://mockjs.com/dist/mock.js"></script>
+
+	<script>
+		var data = Mock.mock({
+	        'list|15': [{
+	            'id|+1': 1
+	        }]
+	    });
+	    // console.log(data.toString());
+	    $(function(){
+	    	var ul = $(".ul");
+	    	function tpl(data){
+	    		for(var i = 0;i<data.length;i++){
+	    			var html = "<li>";
+	    				html+=data.id;
+	    				html+="</li>";
+	    		}
+	    		return html
+	    	}
+	    	console.log(data);
+	    	console.log(tpl(data.list));
+	    })
+	</script>
+</body>
+</html>
