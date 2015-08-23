@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+	<meta content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width" name="viewport"/>
+    <meta name="MobileOptimized" content="320" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait" />
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait" />
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<style>
+		body{
+			/*background-color: #000;*/
+		}
+		.path{
+		  stroke-dasharray: 1000;
+		  stroke-dashoffset: 1000;
+		  -webkit-animation: dash 5s linear 0 1 ;
+		  animation: dash 5s linear 0 1 ;
+		  /*-webkit-animation-fill-mode: forwards;*/
+		}
+
+		@keyframes dash {
+		  from{
+		    stroke-dashoffset: 1000;
+		  }
+		  to {
+		    stroke-dashoffset: 0;
+		  }
+		}
+		@-webkit-keyframes dash {
+		  from {
+		    stroke-dashoffset: 1000;
+		  }
+		  to {
+		    stroke-dashoffset: 0;
+		  }
+		}
+	</style>
+</head>
+<body>
+	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="340px" height="333px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+
+  <path class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M606.6875-56.6875l312.5 312.5c24.4063 24.4063 24.4063 63.9688 0 88.375l-312.5 312.5c-24.4063 24.4063-63.9688 24.4063-88.375 0-24.4063-24.4063-24.4063-63.9688 0-88.375l205.8125-205.8125h-599.125c-34.5313 0-62.5-27.9688-62.5-62.5s27.9688-62.5 62.5-62.5h599.125l-205.8125-205.8125c-12.1875-12.1875-18.3125-28.1875-18.3125-44.1875s6.0938-32 18.3125-44.1875c24.4063-24.4063 63.9688-24.4063 88.375 0z"/>
+  
+</svg>
+	<script type="text/javascript" src="js/fullPage.min.js"></script>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+	// var runPage = new FullPage({
+	//     id : 'pageContain',                            
+	//     slideTime : 800,
+	//   	continuous : true,
+	//     effect : {
+	//         transform : {
+	//             translate : 'Y',
+	//             scale : [.1, 1],
+	//             rotate : [0, 0]
+	//         },
+	//         opacity : [0, 1]
+	//         // zIndex : [-1,1]
+	//     },
+	//     mode : 'wheel,touch',
+	//     easing : 'ease'
+	// });
+	</script>
+</body>
+</html>
