@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉刷新</title>
+	<meta name="viewport" content="width=device-width ,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <link rel="stylesheet" href="style.css">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="scrollRefresh.js"></script>
+    <style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			border-bottom: 1px solid #000;
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.a1{
+			background-color: #f00;
+			height: 50px;
+		}
+    </style>
+</head>
+<body>
+	<div class="a1"></div>
+	<div class="scrollWrap">
+		<div class="scrollTouch">
+			<p class="scroll-tip">下拉刷新...</p>
+         	<div class="scrollMain">
+         		<ul id='refreshList'>
+	                <li>item1</li>
+	                <li>item2</li>
+	                <li>item3</li>
+	                <li>item4</li>
+	                <li>item5</li>
+	                <li>item6</li>
+	                <li>item7</li>
+	                <li>item8</li>
+	                <li>item9</li>
+	                <li>item10</li>
+	                <li>item11</li>
+	                <li>item12</li>
+	                <li>item13</li>
+	                <li>item14</li>
+	                <li>item15</li>
+	                <li>item14</li>
+	                <li>item15</li>
+	                <li>item14</li>
+	                <li>item15</li>
+	            </ul>
+         	</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			var a  = new scrollRefresh({
+		    	devaation : 50,
+		    	success   : function(tip,end,onFail){
+
+		    		tip.html('加载完成');
+					var html = $('#a1').html();
+					$("ul").prepend(html);
+					end && end();
+		    	}
+		    })
+		})
+	</script>
+	<script type='text/html' id="a1">
+		<li>添加的</li>
+	</script>
+
+</body>
+</html>
