@@ -86,15 +86,7 @@ function scrollRefresh(opt){
 			tip.html('正在加载...');
 			touchArea.on('webkitTransitionEnd.end1',function(){
 				touchArea.removeClass('onload');
-
-
-
 				success(tip,option.success,successEnd,onFail)
-
-
-
-				touchArea.off('webkitTransitionEnd.end1');
-				
 			});
 			touchArea.addClass('onload');
 			translate(80);
@@ -112,9 +104,7 @@ function scrollRefresh(opt){
 			flag = 0;
 			touchArea.removeClass('onload2');
 			touchArea.off('webkitTransitionEnd.end2');
-			console.log(2)
 		})
-		console.log(1)
 		touchArea.addClass('onload2');
 		translate(0);
 	}
@@ -136,6 +126,8 @@ function scrollRefresh(opt){
 	 */
 	function success(tip,callback,end,onFail){
 		// tip.off('touchstart');
+		console.log('触发')
 		callback && callback(tip,end,onFail);
+		// touchArea.off('webkitTransitionEnd.end1');
 	}
 }
