@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数字滚动</title>
+	<meta name="viewport" content="width=device-width ,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="numAnimate.js"></script>
+    <style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.numAnimation{
+			overflow: hidden;
+			height: 30px;
+		}
+		.numAnimation ul{
+			width: 30px;
+			float: left;
+		}
+		.numAnimation li{
+			line-height: 30px;
+			text-align: center;
+			background: blue;
+			color: #fff;
+			list-style: none;
+		}
+    </style>
+</head>
+<body>
+	<div class="numAnimation" id="a1">
+	</div>
+	<div class="numAnimation" id="a2">
+	</div>
+	<script>
+		var num = 100;
+		var num2 = 100;
+		var a = new numAnimate({
+			obj : $('#a1'),
+			numLength : 10,
+			defauleNum : num
+		});
+
+		var b = new numAnimate({
+			obj : $('#a2'),
+			numLength : 10,
+			defauleNum : num2
+		});
+
+		setInterval(function(){
+			num  = num + Math.random()*100;
+			a.showNum(num);
+
+			num2  = num2 - Math.random()*100;
+			b.showNum(num2);
+		},3000)
+	</script>
+	<script>
+	</script>
+
+</body>
+</html>
