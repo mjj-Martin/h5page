@@ -64,10 +64,13 @@
 		    	devaation : 50,
 		    	success   : function(tip,end,onFail){
 
-		    		tip.html('加载完成');
-					var html = $('#a1').html();
-					$("ul").prepend(html);
-					end && end();
+		    		setTimeout(function(){
+		    			tip.html('加载完成');
+						var html = $('#a1').html();
+						$("ul").prepend(html);
+						
+						end && end();
+		    		},2000)
 		    	}
 		    })
 		})

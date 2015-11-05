@@ -24,9 +24,15 @@ function scrollRefresh(opt){
 	 */
 	var flag = 0;
 
-	touchArea.on('touchstart',scrollTouchStart);
-	touchArea.on('touchmove',scrollTouchMove);
-	touchArea.on('touchend',scrollTouchEnd);
+	// touchArea.on('touchstart',scrollTouchStart);
+	// touchArea.on('touchmove',scrollTouchMove);
+	// touchArea.on('touchend',scrollTouchEnd);
+
+	$(document.body)
+		.on('touchstart',touchArea,scrollTouchStart)
+		.on('touchmove',touchArea,scrollTouchMove)
+		.on('touchend',touchArea,scrollTouchEnd)
+
 
 	// 设置偏移量
 	function translate(num){
@@ -36,21 +42,25 @@ function scrollRefresh(opt){
 		})
 	}
 
+	/**
+	 * [setTransitionTime 设置滑动元素的动画时间和延时时间]
+	 * @param {[type]} time   [动画执行时间]
+	 * @param {[type]} delay [动画延时执行时间]
+	 */
+	function setTransitionTime(time,delay){
+		delay = delay || 0;
+		touchArea.css({
+			'-webkit-transition-duration':time+'ms',
+			'transition-duration':time+'ms',
+			'-webkit-transition-delay':delay+'s',
+			'-webkit-transition-delay':delay+'s'
+		})
+	}
+
 	// 触摸开始，初始化偏移值
 	
 	function scrollTouchStart(e){
-
-		console.log(flag)
-
-		if (flag != 2) {
-			if (touchArea.hasClass('onload2')) {
-				touchArea.removeClass('onload2');
-			}
-			if (touchArea.hasClass('onload')) {
-				touchArea.removeClass('onload');
-			}
-		}
-
+		setTransitionTime(0);
 		var target = e.originalEvent.targetTouches[0];
 		scrollBarOffset = body.scrollTop();
 		touchStartOffset = target.clientY;
@@ -73,10 +83,10 @@ function scrollRefresh(opt){
 					tip.html('释放加载...');
 					flag = 1;
 				}
-
 				translate(num);
 			}
 		}
+		// e.preventDefault();
 	}
 
 	// 结束
@@ -84,14 +94,16 @@ function scrollRefresh(opt){
 		if(flag == 1){
 			flag = 2;
 			tip.html('正在加载...');
-			touchArea.on('webkitTransitionEnd.end1',function(){
-				touchArea.removeClass('onload');
-				success(tip,option.success,successEnd,onFail)
+			touchArea.on('webkitTransitionEnd',function(){
+				success(tip,option.success,successEnd,onFail);
+				$(this).off('webkitTransitionEnd');
 			});
-			touchArea.addClass('onload');
+
+			setTransitionTime(200);
 			translate(80);
+			
 		}else if(flag == 2){
-			return false;
+			e.preventDefault();
 		}else{
 			translate(0);
 			flag = 0;
@@ -100,12 +112,8 @@ function scrollRefresh(opt){
 
 	// 下拉回调函数执行后的操作
 	function successEnd(){
-		touchArea.on('webkitTransitionEnd.end2',function(){
-			flag = 0;
-			touchArea.removeClass('onload2');
-			touchArea.off('webkitTransitionEnd.end2');
-		})
-		touchArea.addClass('onload2');
+		flag = 0;
+		setTransitionTime(400,.3);
 		translate(0);
 	}
 	//下拉回调失败
@@ -126,7 +134,6 @@ function scrollRefresh(opt){
 	 */
 	function success(tip,callback,end,onFail){
 		// tip.off('touchstart');
-		console.log('触发')
 		callback && callback(tip,end,onFail);
 		// touchArea.off('webkitTransitionEnd.end1');
 	}
