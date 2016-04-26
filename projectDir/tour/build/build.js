@@ -11,7 +11,6 @@ var webpackConfig = require('./webpack.prod.conf')
 var gulp = require('gulp')
 var imagemin = require("gulp-imagemin")
 var pngquant = require("imagemin-pngquant")
-var spriter = require("gulp-css-spriter")
 
 console.log(
   '  Tip:\n' +
@@ -31,19 +30,6 @@ webpack(webpackConfig, function (err, stats) {
   spinner.stop()
   if (err) throw err
 
-  // 执行css sprite任务
-  
-  // gulp.task('spriter', function() {
-
-  //   var timestamp = +new Date();
-  //   gulp.src(config.build.assetsRoot+"/**/*.css")
-  //       //处理合并图
-  //       .pipe(spriter({
-  //           "spriteSheet":config.build.assetsRoot+"/spript_"+timestamp+".png",
-  //           "pathToSpriteSheetFromCSS":"spript_"+timestamp+".png"
-  //       }))
-  //       .pipe(gulp.dest(config.build.assetsRoot))
-  // });
 
   // 执行图片压缩服务
   gulp.task('imagemin',function(){
@@ -62,7 +48,6 @@ webpack(webpackConfig, function (err, stats) {
                     //图片压缩速度，默认为3 ，10最高，会有5%失真
                     // speed: 4
                 })]
-                
             })
         )
         .pipe(gulp.dest(config.build.assetsRoot))

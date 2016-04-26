@@ -33,6 +33,9 @@ compiler.plugin('compilation', function (compilation) {
   })
 })
 
+// 添加参数解析body-parser
+app.use(require('body-parser')())
+
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]
@@ -42,19 +45,19 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(context, options))
 })
 
-// handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
+// app.use(require('connect-history-api-fallback')())
 
 // serve webpack bundle output
 app.use(devMiddleware)
 
-// enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
 
 // serve pure static assets
 var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+require('../mock/mock.js')(app)
 
 module.exports = app.listen(port, function (err) {
   if (err) {

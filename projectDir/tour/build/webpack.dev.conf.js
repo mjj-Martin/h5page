@@ -20,13 +20,6 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    // 添加实时刷新
-    // new BrowserSyncPlugin({
-    //   host: 'localhost',
-    //   port: 8081,
-    //   server: { baseDir: ['public'] }
-    // }),
-    // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
